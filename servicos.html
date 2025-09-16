@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviços - Copymaster</title>
+<link rel="icon" href="img/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* RESET E BODY */
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { overflow-x:hidden; font-family:'Poppins', Arial, sans-serif; scroll-behavior: smooth; background:linear-gradient(135deg,#f5f7fa,#e4e7eb); color:#333; }
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+header img { max-width:160px; transition: transform 0.3s; }
+header img:hover { transform: scale(1.05); }
+nav ul { list-style:none; display:flex; gap:30px; }
+nav ul li a { text-decoration:none; color:#111; font-weight:600; font-size:16px; position:relative; transition:color 0.3s; }
+nav ul li a::after { content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:#111; transition:width 0.3s; }
+nav ul li a:hover { color:#444; }
+nav ul li a:hover::after { width:100%; }
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1100;
+  position: absolute;
+  right: 20px; /* distância da borda */
+  top: 50%; 
+  transform: translateY(-50%);
+}
+/* MOBILE MENU */
+@media(max-width:768px){
+  nav ul {
+    flex-direction: column; position: fixed; top:70px; right:0;
+    width:220px; background: rgba(255,255,255,0.95); padding:20px; gap:15px; border-radius:10px 0 0 10px;
+    transform: translateX(100%); transition: transform 0.3s ease; box-shadow:0 8px 20px rgba(0,0,0,0.15); visibility:hidden; z-index:1050;
+  }
+  nav ul.active { transform: translateX(0); visibility: visible; }
+  .menu-toggle { display:block; }
+  body.no-scroll { overflow:hidden; }
+}
+
+/* SECTION TITLE */
+.section-title { text-align:center; margin:70px 20px 30px; }
+.section-title h2 { font-size:34px; font-weight:700; letter-spacing:1px; color:#111; }
+.divider { width:80px; height:4px; background:linear-gradient(90deg,#111,#666); margin:12px auto; border-radius:5px; }
+
+/* INTRO TEXT */
+.intro { max-width:800px; margin:30px auto 50px; text-align:center; font-size:17px; line-height:1.6; color:#444; padding:0 20px; }
+
+/* SERVICES GRID */
+.services { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px; padding:60px 10%; }
+.service-card { background: rgba(255,255,255,0.75); backdrop-filter:blur(10px); padding:30px 20px; border-radius:20px; text-align:center; box-shadow:0 8px 25px rgba(0,0,0,0.08); transition: transform 0.4s, box-shadow 0.4s; }
+.service-card:hover { transform: translateY(-10px); box-shadow:0 15px 40px rgba(0,0,0,0.15); }
+.service-card i { font-size:26px; color:#111; margin-bottom:12px; }
+.service-card h3 { font-size:18px; font-weight:600; color:#333; }
+
+/* DIFFERENTIALS */
+.differentials { background:#fff; padding:60px 10%; text-align:center; }
+.differentials h2 { font-size:28px; margin-bottom:20px; color:#111; }
+.differentials p { font-size:16px; color:#555; max-width:700px; margin:0 auto 40px; }
+.differentials-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:25px; }
+.differentials-item { background:#f5f5f5; padding:25px; border-radius:15px; box-shadow:0 6px 18px rgba(0,0,0,0.05); transition:transform 0.3s; }
+.differentials-item:hover { transform:translateY(-8px); }
+.differentials-item i { font-size:24px; margin-bottom:12px; color:#111; }
+
+/* CALL TO ACTION */
+.cta { background: linear-gradient(135deg,#111,#333); color:#fff; text-align:center; padding:60px 20px; }
+.cta h2 { font-size:26px; margin-bottom:15px; }
+.cta p { margin-bottom:25px; font-size:16px; color:#ddd; }
+.cta a { display:inline-block; padding:12px 28px; background:#fff; color:#111; font-weight:600; border-radius:30px; text-decoration:none; transition:0.3s; }
+.cta a:hover { background:#f1f1f1; }
+
+/* FOOTER */
+footer { background:#111; text-align:center; padding:40px 20px; }
+footer img { max-width:140px; margin-bottom:12px; filter:brightness(0) invert(1); }
+footer p { color:#bbb; font-size:14px; letter-spacing:0.5px; }
+
+/* RESPONSIVO */
+@media(max-width:1024px){ header{padding:15px 30px;} header img{max-width:140px;} .section-title h2{font-size:32px;} }
+@media(max-width:768px){ .section-title{margin:40px 15px 15px;} .section-title h2{font-size:26px;} .intro{font-size:16px;} }
+@media(max-width:480px){ header img{max-width:110px;} .section-title h2{font-size:22px;} .divider{width:60px;} .intro{font-size:15px;} }
+
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html"><img src="img/logomarca-propria-1.png" alt="Copymaster"></a>
+  <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sobre.html">Sobre Nós</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="pesquisa.html">Pesquisa</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section-title">
+  <h2>Nossos Serviços</h2>
+  <div class="divider"></div>
+</section>
+
+<p class="intro">
+  Na <strong>Copymaster Copiadoras</strong>, oferecemos soluções completas em impressão, cópia e gestão de equipamentos. 
+  Nosso compromisso é garantir qualidade, eficiência e suporte ágil para que sua empresa funcione sem interrupções.
+</p>
+
+<section class="services">
+  <div class="service-card"><i class="fa fa-print"></i><h3>Equipamentos de alta tecnologia</h3></div>
+  <div class="service-card"><i class="fa fa-tools"></i><h3>Assistência Técnica Completa</h3></div>
+  <div class="service-card"><i class="fa fa-sync-alt"></i><h3>Locação de Equipamentos</h3></div>
+  <div class="service-card"><i class="fa fa-handshake"></i><h3>Contratos Personalizados</h3></div>
+  <div class="service-card"><i class="fa fa-cogs"></i><h3>Suporte Técnico Rápido</h3></div>
+  <div class="service-card"><i class="fa fa-truck"></i><h3>Entrega e Instalação</h3></div>
+</section>
+
+<section class="differentials">
+  <h2>Por que escolher a Copymaster?</h2>
+  <p>Nosso diferencial está em unir tecnologia de ponta, atendimento humano e soluções flexíveis para empresas de todos os portes.</p>
+  <div class="differentials-list">
+    <div class="differentials-item"><i class="fa fa-star"></i><h4>Qualidade Garantida</h4><p>Trabalhamos apenas com marcas de confiança e alto desempenho.</p></div>
+    <div class="differentials-item"><i class="fa fa-clock"></i><h4>Agilidade</h4><p>Atendimento rápido e eficiente para evitar paradas no seu negócio.</p></div>
+    <div class="differentials-item"><i class="fa fa-leaf"></i><h4>Sustentabilidade</h4><p>Soluções que reduzem custos e impactos ambientais.</p></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Precisa de soluções em impressão?</h2>
+  <p>Entre em contato com nossa equipe e descubra como podemos ajudar sua empresa a crescer com mais eficiência.</p>
+  <a href="contato.html">Fale Conosco</a>
+</section>
+
+<footer>
+  <img src="img/logomarca-propria-1.png" alt="Copymaster">
+  <p>&copy; 2025 Copymaster Copiadoras — Todos os direitos reservados.</p>
+</footer>
+
+<script>
+const mobileMenu = document.getElementById('mobile-menu');
+const navList = document.querySelector('nav ul');
+mobileMenu.addEventListener('click', () => {
+  navList.classList.toggle('active');
+  document.body.classList.toggle('no-scroll');
+});
+</script>
+
+</body>
+</html>

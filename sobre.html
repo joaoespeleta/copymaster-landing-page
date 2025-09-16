@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre - Copymaster</title>
+<link rel="icon" href="img/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ====== RESET ====== */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Poppins', Arial, sans-serif; background:linear-gradient(135deg,#f5f7fa,#e4e7eb); color:#333; overflow-x:hidden;}
+
+/* ====== HEADER ====== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+header img {max-width:160px; transition:transform 0.3s;}
+header img:hover {transform:scale(1.05);}
+nav ul {list-style:none; display:flex; gap:30px;}
+nav ul li a {
+  text-decoration:none; color:#111; font-weight:600; font-size:16px; position:relative; transition:color 0.3s;
+}
+nav ul li a::after {
+  content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:#111; transition:width 0.3s;
+}
+nav ul li a:hover {color:#444;}
+nav ul li a:hover::after {width:100%;}
+
+/* ====== HAMBURGER ====== */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1100;
+  position: absolute;
+  right: 20px; /* distância da borda */
+  top: 50%; 
+  transform: translateY(-50%);
+}
+@media (max-width:768px) {
+  nav ul {
+    flex-direction:column; position:fixed; top:70px; right:0; width:220px;
+    background:rgba(255,255,255,0.95); padding:20px; gap:15px; border-radius:10px 0 0 10px;
+    transform:translateX(100%); transition:transform 0.3s ease; z-index:1050;
+  }
+  nav ul.active {transform:translateX(0);}
+  .menu-toggle {display:block; color:#111;}
+  body.no-scroll {overflow:hidden;}
+}
+
+/* ====== HERO ====== */
+.hero {
+  background:url("img/empresa.jpg") center/cover no-repeat; height:70vh;
+  display:flex; justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden;
+}
+.hero::before {
+  content:""; position:absolute; inset:0; background:rgba(255,255,255,0.6); backdrop-filter:blur(3px);
+}
+.hero h1 {position:relative; font-size:48px; font-weight:700; color:#111; animation:fadeInDown 1.2s ease;}
+@keyframes fadeInDown {from {opacity:0; transform:translateY(-40px);} to {opacity:1; transform:translateY(0);}}
+
+/* ====== SECTION ====== */
+.section {display:flex; align-items:center; justify-content:space-between; padding:80px 10%; gap:40px; flex-wrap:wrap;}
+.section img {max-width:480px; width:100%; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,0.1);}
+.section-text {flex:1; padding:20px;}
+.section-text h2 {font-size:32px; font-weight:700; margin-bottom:15px; color:#111;}
+.section-text p {font-size:16px; color:#555; line-height:1.7;}
+
+/* ====== FEATURES ====== */
+.features {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; padding:60px 10%;}
+.feature {
+  background:rgba(255,255,255,0.75); backdrop-filter:blur(10px);
+  padding:40px 30px; border-radius:20px; text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  transition:transform 0.4s, box-shadow 0.4s;
+}
+.feature:hover {transform:translateY(-10px); box-shadow:0 15px 40px rgba(0,0,0,0.15);}
+.feature img {max-width:200px; margin-bottom:20px;}
+.feature h3 {margin-bottom:12px; font-size:22px; color:#111;}
+.feature p {font-size:15px; color:#555;}
+
+/* ====== FOOTER ====== */
+footer {background:#111; text-align:center; padding:40px 20px;}
+footer img {max-width:140px; margin-bottom:12px; filter:brightness(0) invert(1);}
+footer p {color:#bbb; font-size:14px; letter-spacing:0.5px;}
+
+/* ====== RESPONSIVIDADE ====== */
+@media(max-width:1024px){
+  header{padding:15px 30px;}
+  .hero h1{font-size:38px;}
+  .section{padding:60px 5%; gap:30px;}
+  .section-text h2{font-size:28px;}
+  .section-text p{font-size:15px;}
+}
+@media(max-width:768px){
+  .section{flex-direction:column; text-align:center; padding:50px 8%;}
+  .section img{max-width:100%;}
+  .section-text{padding:10px 0;}
+  .hero h1{font-size:32px;}
+  .features{padding:40px 8%; gap:20px;}
+  .feature{padding:25px 20px;}
+}
+@media(max-width:480px){
+  header img{max-width:120px;}
+  nav ul{width:170px;}
+  .hero{height:50vh;}
+  .hero h1{font-size:26px;}
+  .section-text h2{font-size:24px;}
+  .section-text p{font-size:14px; line-height:1.5;}
+  .feature h3{font-size:18px;}
+  .feature p{font-size:14px;}
+  footer p{font-size:12px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html"><img src="img/logomarca-propria-1.png" alt="Copymaster"></a>
+  <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sobre.html">Sobre Nós</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="pesquisa.html">Pesquisa</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Sobre a Copymaster</h1>
+</section>
+
+<section class="section">
+  <div class="section-text">
+    <h2>Quem Somos</h2>
+    <p>
+      A Copymaster Copiadoras atua há anos em Santana de Parnaíba e região, oferecendo soluções completas em locação de impressoras, multifuncionais e copiadoras. 
+      Nosso foco é otimizar a produtividade de empresas de todos os portes, com atendimento próximo e suporte técnico ágil.
+    </p>
+  </div>
+  <img src="img/ponte-com-cidade.jpg" alt="Quem Somos">
+</section>
+
+<section class="features">
+  <div class="feature">
+    <img src="img/renderizacao-3d-da-flecha-atingindo-o-alvo.jpg" alt="Missão">
+    <h3>Missão</h3>
+    <p>Oferecer soluções de impressão modernas e eficientes, ajudando nossos clientes a reduzir custos e aumentar sua produtividade.</p>
+  </div>
+  <div class="feature">
+    <img src="img/empresario-em-um-grande-escritorio.jpg" alt="Visão">
+    <h3>Visão</h3>
+    <p>Ser a empresa referência em locação de impressoras e multifuncionais em Santana de Parnaíba e região.</p>
+  </div>
+  <div class="feature">
+    <img src="img/trabalho-em-equipe-poder-negocios-bem-sucedidos-conceito-no-local-de-trabalho.jpg" alt="Valores">
+    <h3>Valores</h3>
+    <p>Ética, confiança, inovação, responsabilidade socioambiental e excelência no atendimento.</p>
+  </div>
+</section>
+
+<footer>
+  <img src="img/logomarca-propria-1.png" alt="Copymaster">
+  <p>&copy; 2025 Copymaster Copiadoras — Todos os direitos reservados.</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navList = document.querySelector('nav ul');
+
+  mobileMenu.addEventListener('click', () => {
+    navList.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
+  });
+
+  navList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navList.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+    });
+  });
+});
+</script>
+
+</body>
+</html>

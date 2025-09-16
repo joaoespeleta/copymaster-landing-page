@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copymaster Copiadoras — Santana de Parnaíba</title>
+<link rel="icon" href="img/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* RESET E BODY */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { overflow-x: hidden; font-family: 'Poppins', Arial, sans-serif; scroll-behavior: smooth; }
+body { background: linear-gradient(135deg, #f5f7fa, #e4e7eb); color: #333; }
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+header img { max-width: 160px; transition: transform 0.3s; }
+header img:hover { transform: scale(1.05); }
+nav ul { list-style: none; display: flex; gap: 30px; }
+nav ul li a {
+  text-decoration: none; color: #111; font-weight: 600; font-size: 16px;
+  position: relative; transition: color 0.3s;
+}
+nav ul li a::after {
+  content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: #111; transition: width 0.3s;
+}
+nav ul li a:hover { color: #444; }
+nav ul li a:hover::after { width: 100%; }
+
+/* HERO */
+.hero {
+  background: url("img/impressora-inicio.jpg") center/cover no-repeat;
+  height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden;
+}
+.hero::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.6); backdrop-filter: blur(3px); }
+.hero h1 { position: relative; font-size: 52px; font-weight: 700; line-height: 1.2; color: #111; animation: fadeInDown 1.2s ease; }
+.hero a {
+  margin-top: 25px; position: relative; padding: 14px 36px; border-radius: 50px;
+  text-transform: uppercase; font-weight: 600; text-decoration: none; color: #fff;
+  background: linear-gradient(135deg, #111, #444); transition: all 0.4s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  animation: fadeInUp 1.2s ease;
+}
+.hero a:hover { transform: translateY(-3px); background: linear-gradient(135deg, #444, #111); }
+
+@keyframes fadeInDown { from {opacity:0; transform: translateY(-40px);} to {opacity:1; transform: translateY(0);} }
+@keyframes fadeInUp { from {opacity:0; transform: translateY(40px);} to {opacity:1; transform: translateY(0);} }
+
+/* SECTION TITLE */
+.section-title { text-align: center; margin: 70px 20px 30px; }
+.section-title h2 { font-size: 34px; font-weight: 700; letter-spacing: 1px; color: #111; }
+.divider { width: 80px; height: 4px; background: linear-gradient(90deg, #111, #666); margin: 12px auto; border-radius: 5px; }
+
+/* ABOUT */
+.about { max-width: 1000px; margin: 0 auto; padding: 40px 20px; display: flex; gap: 40px; align-items: center; opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+.about.visible { opacity: 1; transform: translateY(0); }
+.about img { width: 30%; margin-left:10%; margin-right: 5%; border-radius: 20px; object-fit: cover; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+.about-text { width: 55%; }
+.about-text h3 { font-size: 28px; font-weight: 600; margin-bottom: 16px; color: #111; }
+.about-text p { font-size: 16px; line-height: 1.6; color: #555; }
+
+/* CARDS */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 60px; }
+.card { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); text-align: center; transition: transform 0.4s, box-shadow 0.4s; opacity: 0; transform: translateY(40px); }
+.card.visible { opacity: 1; transform: translateY(0); }
+.card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+.card h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; color: #111; }
+.card p { color: #555; font-size: 15px; line-height: 1.6; }
+
+/* CONTACT INFO */
+.contact-info { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center; opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+.contact-info.visible { opacity: 1; transform: translateY(0); }
+.contact-info h3 { font-size: 26px; margin-bottom: 16px; color: #111; }
+.contact-info p { font-size: 16px; line-height: 1.5; color: #555; margin-bottom: 8px; }
+
+/* FOOTER */
+footer { background: #111; text-align: center; padding: 40px 20px; }
+footer img { max-width: 140px; margin-bottom: 12px; filter: brightness(0) invert(1); }
+footer p { color: #bbb; font-size: 14px; letter-spacing: 0.5px; }
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1100;
+  position: absolute;
+  right: 20px; /* distância da borda */
+  top: 50%; 
+  transform: translateY(-50%);
+}
+/* MENU MOBILE */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 220px;
+    background: rgba(255,255,255,0.95);
+    padding: 20px;
+    gap: 15px;
+    border-radius: 10px 0 0 10px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    visibility: hidden;
+    z-index: 1050;
+  }
+
+  nav ul.active {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .menu-toggle { display: block; }
+}
+
+/* RESPONSIVO */
+@media (max-width: 1024px) {
+  header { padding: 15px 30px; }
+  .hero h1 { font-size: 42px; }
+  .hero a { padding: 12px 28px; font-size: 14px; }
+  .about { flex-direction: column; text-align: center; gap: 25px; }
+  .about img, .about-text { width: 90%; margin: 0 auto; }
+  .cards { padding: 40px 20px; }
+  .card { padding: 20px; }
+  .section-title h2 { font-size: 28px; }
+}
+
+@media (max-width: 600px) {
+  header { padding: 15px 20px; }
+  .hero h1 { font-size: 32px; }
+  .hero a { padding: 10px 20px; font-size: 14px; }
+  .about-text h3 { font-size: 22px; }
+  .about-text p { font-size: 15px; }
+  .cards { gap: 20px; padding: 30px 10px; }
+  .card h3 { font-size: 20px; }
+  .card p { font-size: 14px; }
+  .contact-info p { font-size: 14px; }
+  .contact-info img { margin-bottom: 5px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html"><img src="img/logomarca-propria-1.png" alt="Copymaster"></a>
+  <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sobre.html">Sobre Nós</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="pesquisa.html">Pesquisa</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Locação de Impressoras e Multifuncionais</h1>
+  <a href="contato.html">Solicite um Orçamento</a>
+</section>
+
+<div id="about" class="section-title">
+  <h2>Sobre a Copymaster</h2>
+  <div class="divider"></div>
+</div>
+
+<section class="about">
+  <img src="img/mulheres-segurando-papel-alto-angulo.jpg" alt="Equipe Copymaster">
+  <div class="about-text">
+    <h3>Desde 2005 servindo a grande São Paulo</h3>
+    <p>A Copymaster Copiadoras (Espeleta Comércio de Copiadoras e Serviços LTDA) está localizada no Jardim Professor Benoá, em Santana de Parnaíba, SP. Desde 2005 oferecemos locação de impressoras e multifuncionais para empresas e pessoas físicas, com atendimento personalizado, manutenção própria e suporte técnico local.</p>
+    <p>Nosso compromisso é qualidade, transparência e proximidade. Você conta com equipamentos modernos, equipe especializada e atendimento ágil para tornar sua experiência o mais eficiente possível.</p>
+  </div>
+</section>
+
+<div id="serviços" class="section-title">
+  <h2>Nossos Diferenciais</h2>
+  <div class="divider"></div>
+</div>
+
+<section class="cards">
+  <div class="card">
+    <h3>Suporte Técnico Próprio</h3>
+    <p>Manutenção especializada interna para minimizar tempo de espera e garantir menos transtornos.</p>
+  </div>
+  <div class="card">
+    <h3>Equipamentos Modernos</h3>
+    <p>Multifuncionais de última geração, alta qualidade de impressão e economia de toner e energia.</p>
+  </div>
+  <div class="card">
+    <h3>Flexibilidade de Contrato</h3>
+    <p>Planos adaptáveis — escolha volume, prazo e serviço conforme sua necessidade, sem surpresas.</p>
+  </div>
+</section>
+
+<div id="contato" class="section-title">
+  <h2>Contato & Localização</h2>
+  <div class="divider"></div>
+</div>
+
+<section class="contact-info">
+  <h3>Como nos encontrar</h3>
+  <p class="endereco">📍 Endereço: Av. Copacabana, 158 A, Jardim Professor Benoá, Santana de Parnaíba — SP, CEP 06502-001</p>
+  <p style="display:flex; justify-content:center; align-items:center; gap:10px; margin-top:20px; color:inherit;">
+  <a href="https://wa.me/551141545651" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:10px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" alt="WhatsApp">
+    <span>Telefone: (11) 4154-5651</span>
+  </a>
+</p>
+
+  <p>🕒 Horário de atendimento: Segunda a Sexta, das 08:00 às 17:00</p>
+  <p style="text-align:center;"><i class="fa fa-envelope"></i> copymaster@terra.com.br</p>
+
+  <div style="margin-top:20px;">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.408777380375!2d-46.92237592592688!3d-23.445715057351318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf1b462a9cbbdb%3A0xd68e7bbe1c561219!2sAv.%20Copacabana%2C%20158%20-%20Jardim%20Prof.%20Benoa%2C%20Santana%20de%20Parna%C3%ADba%20-%20SP%2C%2006502-001!5e0!3m2!1spt-BR!2sbr!4v1757964394471!5m2!1spt-BR!2sbr" 
+      width="100%" height="300" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<footer>
+  <img src="img/logomarca-propria-1.png" alt="Copymaster">
+  <p>&copy; 2025 Copymaster Copiadoras — Todos os direitos reservados.</p>
+</footer>
+
+<script>
+// Toggle menu mobile e bloquear scroll
+const mobileMenu = document.getElementById('mobile-menu');
+const navList = document.querySelector('nav ul');
+
+mobileMenu.addEventListener('click', () => {
+  navList.classList.toggle('active');
+  document.body.classList.toggle('no-scroll');
+});
+
+// Scroll Reveal
+document.addEventListener("DOMContentLoaded", function(){
+  const observerOptions = { root: null, rootMargin: "0px", threshold: 0.2 };
+  const revealElements = document.querySelectorAll(".about, .card, .contact-info");
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  revealElements.forEach(el => observer.observe(el));
+});
+</script>
+
+<style>
+.no-scroll { overflow: hidden; }
+.endereco { color: #000; text-decoration: none; outline: none; }
+.endereco a { color: #000; }
+</style>
+
+</body>
+</html>
